@@ -1,0 +1,15 @@
+{
+  "name": "astorre-landing",
+  "version": "1.0.0",
+  "description": "Landing page for Astorre, an AI-powered retail optimization platform",
+  "main": "index.html",
+  "scripts": {
+    "start": "lite-server",
+    "dev": "lite-server"
+  },
+  "author": "Oskar David Vanegas Juarez",
+  "license": "MIT",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
