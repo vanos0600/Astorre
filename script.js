@@ -1,80 +1,85 @@
+document.addEventListener("DOMContentLoaded", () => {
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const nav = document.getElementById('nav');
 
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const nav = document.getElementById('nav');
-        
+    if (mobileMenuBtn && nav) {
         mobileMenuBtn.addEventListener('click', () => {
             nav.classList.toggle('active');
         });
-        
-        // FAQ Accordion
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            
+    }
+
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        if (question) {
             question.addEventListener('click', () => {
+                // Close other active items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // Toggle current item
                 item.classList.toggle('active');
             });
-        });
-        
-        // Back to Top Button
-        const backToTopBtn = document.getElementById('backToTop');
-        
+        }
+    });
+
+    // Back to Top Button
+    const backToTopBtn = document.getElementById('backToTop');
+
+    if (backToTopBtn) {
         window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
+            if (window.scrollY > 300) {
                 backToTopBtn.classList.add('active');
             } else {
                 backToTopBtn.classList.remove('active');
             }
         });
-        
-        backToTopBtn.addEventListener('click', () => {
+
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         });
-        
-      // Activa animaciones solo cuando los elementos entran en pantalla (scroll)
-// Agrega la clase "active" a .store-path para animar el dash
-// Y elimina estilos iniciales de opacidad/translate para fadeInUp
+    }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const faders = document.querySelectorAll('.faq-container, .faq-item, .features-animation, .feature-card, .animation-container');
-  const storePaths = document.querySelectorAll('.store-path');
+    // Fade-in animations on scroll
+    const animatedElements = document.querySelectorAll('.feature-card, .benefit-item, .step, .testimonial');
 
-  const options = {
-    threshold: 0.2,
-  };
-
-  const appearOnScroll = new IntersectionObserver((entries, appearOnScroll) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-
-      entry.target.style.opacity = 1;
-      entry.target.style.transform = 'translateY(0)';
-      entry.target.style.animationPlayState = 'running';
-      appearOnScroll.unobserve(entry.target);
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = `fadeInUp 0.8s ease forwards`;
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1
     });
-  }, options);
 
-  faders.forEach(fader => {
-    appearOnScroll.observe(fader);
-  });
-
-  // Animar SVG dash cuando está visible
-  const dashObserver = new IntersectionObserver((entries, dashObserver) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-        dashObserver.unobserve(entry.target);
-      }
+    animatedElements.forEach(el => {
+        el.style.opacity = '0'; // Hide elements initially
+        observer.observe(el);
     });
-  }, options);
-
-  storePaths.forEach(path => {
-    dashObserver.observe(path);
-  });
 });
 
+// Add Keyframes for animation
+const style = document.createElement('style');
+style.innerHTML = `
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}`;
+document.head.appendChild(style);
