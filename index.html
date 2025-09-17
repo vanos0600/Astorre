@@ -1,286 +1,468 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Astorre - Retail Intelligence Solutions</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Astorre - Retail Under Control</title>
+  <meta name="theme-color" content="#2C52FE" />
+  <meta name="description" content="Astorre - AI-powered retail solution from delivery to shelf, fully aligned by AI" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="manifest" href="/manifest.json" />
+  <link href="https://fonts.googleapis.com/css2?family=Leelawadee:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fretailai6340back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
 </head>
+
 <body>
-    <header id="header">
-        <div class="header-container">
-            <a href="#" class="logo">
-                <i class="fas fa-brain logo-icon"></i>
-                Astorre
-            </a>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav id="nav">
-                <ul>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#benefits">Benefits</a></li>
-                    <li><a href="#how-it-works">How It Works</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                </ul>
-            </nav>
-            <div class="header-buttons">
-                <a href="#" class="btn btn-secondary">Log In</a>
-                <a href="#" class="btn btn-primary">Get Started</a>
-            </div>
-        </div>
-    </header>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div class="dhiwise-code" id="root"></div>
+  <script type="module" src="/src/index.jsx"></script>
 
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Transform Retail Operations with AI</h1>
-                <p class="hero-tagline">Leaner costs, fuller shelves, and engaged teams.</p>
-                <p class="hero-subtitle">Astorre unites predictive staffing and AI-driven task orchestration to maximize your store's performance.</p>
-                <div class="hero-buttons">
-                    <a href="#" class="btn btn-accent">Book a Demo</a>
-                    <a href="#" class="btn btn-secondary">Learn More</a>
-                </div>
-            </div>
-            <div class="stats-container">
-                <div class="stat-item">
-                    <div class="stat-number">20%</div>
-                    <div class="stat-label">Cost Reduction</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">98%</div>
-                    <div class="stat-label">Staffing Accuracy</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">15%</div>
-                    <div class="stat-label">Increased Sales</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Fuller Shelves</div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookieBanner">
+      <div class="container">
+          <div class="cookie-content">
+              <div class="cookie-text">
+                  <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. 
+                  <a href="#privacy" class="cookie-link">Privacy Policy</a></p>
+              </div>
+              <div class="cookie-buttons">
+                  <button class="btn btn-outline" id="managePreferences">Manage Preferences</button>
+                  <button class="btn btn-primary" id="acceptCookies">Accept</button>
+              </div>
+          </div>
+      </div>
+  </div>
 
-    <section class="section" id="problem-solution">
-        <div class="container section-title">
-             <h2>The Challenge & The Solution</h2>
-             <p>Placeholder para describir el problema del retail y cómo Astorre lo resuelve.</p>
-        </div>
-    </section>
-    
-    <section class="section features" id="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>What Astorre Brings</h2>
-                <p>Intelligent solutions for modern retail challenges</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-brain"></i></div>
-                    <h3>Predictive Staffing</h3>
-                    <p>Continuously monitors store activity to optimize staffing and schedules teams according to real-time demand.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-tasks"></i></div>
-                    <h3>AI Task Orchestration</h3>
-                    <p>Proactively assigns replenishment and other tasks before shelves run low, preventing stockouts.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-money-bill-wave"></i></div>
-                    <h3>Piece-Rate Pay</h3>
-                    <p>Aligns workforce incentives with store performance, rewarding efficiency and proactivity.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Header -->
+  <header class="navbar">
+      <div class="container">
+          <div class="nav-content">
+              <button class="logo" id="logoBtn">
+                  <img src="logo/image.png" alt="Astorre Logo" class="logo-img">
+                  
+              </button>
+              
+              <nav class="nav-menu" id="navMenu">
+                  <a href="#challenges" class="nav-link">Challenges</a>
+                  <a href="#how-it-works" class="nav-link">How it works</a>
+                  <a href="#value" class="nav-link">Value</a>
+                  <a href="#who-its-for" class="nav-link">Who it's for</a>
+                  <a href="#why-astorre" class="nav-link">Why Astorre</a>
+                  <a href="#contact" class="nav-link">Contact us</a>
+              </nav>
+              
+              <div class="nav-buttons">
+                  <button class="btn btn-outline" onclick="scrollToSection('contact')">Contact Astorre</button>
+                  <button class="btn btn-primary" onclick="scrollToSection('contact')">Request Demo</button>
+              </div>
+              
+              <button class="mobile-menu-btn" id="mobileMenuBtn">
+                  <i class="fas fa-bars"></i>
+              </button>
+          </div>
+      </div>
+  </header>
 
-     <section class="section" id="value-pillars">
-        <div class="container section-title">
-             <h2>Our Value Pillars</h2>
-             <p>Placeholder para los pilares: Leaner Costs, Fuller Shelves, Engaged Teams.</p>
-        </div>
-    </section>
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+      <div class="hero-bg">
+          <div class="hero-circle hero-circle-1"></div>
+          <div class="hero-circle hero-circle-2"></div>
+      </div>
+      <div class="container">
+          <div class="hero-content">
+        
+              <h1 class="hero-title animate-text">
+                  Astorre in role, 
+                  <span class="gradient-text">retail under control</span>
+              </h1>
+              <h2 class="hero-subtitle animate-text">From delivery to shelf — fully aligned by AI</h2>
+              <p class="hero-description animate-text">
+                  Astorre unites predictive staffing, AI-driven task orchestration, and piece-rate pay in a single platform — giving UK retailers leaner costs, fuller shelves, and engaged teams.
+              </p>
+              <button class="btn btn-primary btn-large animate-text" onclick="scrollToSection('contact')">
+                  Request Now
+                  <i class="fas fa-arrow-right"></i>
+              </button>
+          </div>
+      </div>
+  </section>
 
-    <section class="section benefits" id="benefits">
-        <div class="container">
-            <div class="section-title">
-                <h2>Business Benefits</h2>
-                <p>How Astorre transforms retail operations</p>
-            </div>
-            <div class="benefits-container">
-                <div class="benefit-item">
-                    <div class="benefit-icon"><i class="fas fa-chart-line"></i></div>
-                    <h3>Increase Sales</h3>
-                    <p>Optimized staffing during peak hours leads to better customer service and increased sales conversion.</p>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon"><i class="fas fa-dollar-sign"></i></div>
-                    <h3>Reduce Costs</h3>
-                    <p>Eliminate overstaffing during slow periods and reduce labor costs significantly.</p>
-                </div>
-                <div class="benefit-item">
-                    <div class="benefit-icon"><i class="fas fa-smile"></i></div>
-                    <h3>Improve Satisfaction</h3>
-                    <p>Happy employees and satisfied customers through better workload distribution.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Problem/Solution Section -->
+  <section class="problem-solution" id="challenges">
+      <div class="container">
+          <div class="section-header">
+              <h2 class="section-title animate-on-scroll">From chaos to clarity</h2>
+          </div>
+          <div class="columns">
+              <div class="column problem-column animate-on-scroll">
+                  <div class="column-header">
+                      <div class="icon-circle problem-icon">
+                          <i class="fas fa-times"></i>
+                      </div>
+                      <h3>The Problem</h3>
+                  </div>
+                  <ul class="bullet-list">
+                      <li>50% staff churn in convenience retail.</li>
+                      <li>Seasonal peaks lift labour demand 40%.</li>
+                      <li>Stockouts cost over £1bn a year.</li>
+                      <li>Systems don't connect: staff, stock, pay misaligned.</li>
+                  </ul>
+              </div>
+              <div class="column solution-column animate-on-scroll">
+                  <div class="column-header">
+                      <div class="icon-circle solution-icon">
+                          <i class="fas fa-check"></i>
+                      </div>
+                      <h3>The Solution</h3>
+                  </div>
+                  <ul class="bullet-list">
+                      <li>One loop: from delivery to shelf.</li>
+                      <li>Predictive staffing: AI forecasts demand.</li>
+                      <li>AI tasking: roles and shifts set on the fly.</li>
+                      <li>Piece-rate pay: fair, legal, motivating.</li>
+                      <li>One dashboard: managers and staff see all.</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </section>
 
-    <section class="section how-it-works" id="how-it-works">
-        <div class="container">
-            <div class="section-title">
-                <h2>How Astorre Works</h2>
-                <p>Simple implementation, powerful results</p>
-            </div>
-            <div class="process-steps">
-                <div class="step">
-                    <div class="step-icon"><i class="fas fa-plug"></i><div class="step-number">1</div></div>
-                    <h3>Connect Systems</h3>
-                    <p>Integrate with your existing POS, inventory, and scheduling systems.</p>
-                </div>
-                <div class="step">
-                    <div class="step-icon"><i class="fas fa-cloud-upload-alt"></i><div class="step-number">2</div></div>
-                    <h3>Analyze Data</h3>
-                    <p>Our AI processes historical and real-time data to identify patterns.</p>
-                </div>
-                <div class="step">
-                    <div class="step-icon"><i class="fas fa-lightbulb"></i><div class="step-number">3</div></div>
-                    <h3>Generate Insights</h3>
-                    <p>Receive actionable recommendations for staffing and operations.</p>
-                </div>
-                <div class="step">
-                    <div class="step-icon"><i class="fas fa-rocket"></i><div class="step-number">4</div></div>
-                    <h3>Optimize Operations</h3>
-                    <p>Implement changes and see measurable improvements in efficiency.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="section" id="founder-story">
-        <div class="container section-title">
-             <h2>Founder's Story</h2>
-             <p>Placeholder.</p>
-        </div>
-    </section>
+  <!-- How It Works Section -->
+  <section class="how-it-works" id="how-it-works">
+      <div class="container">
+          <div class="section-header">
+              <h2 class="section-title animate-on-scroll">How Astorre works</h2>
+          </div>
+          <div class="process-steps">
+              <div class="step animate-on-scroll">
+                  <div class="step-icon">
+                      <i class="fas fa-box"></i>
+                  </div>
+                  <p>Supplier & ERP data combined.</p>
+              </div>
+              <div class="step animate-on-scroll">
+                  <div class="step-icon">
+                      <i class="fas fa-brain"></i>
+                  </div>
+                  <p>AI predicts demand in real time.</p>
+              </div>
+              <div class="step animate-on-scroll">
+                  <div class="step-icon">
+                      <i class="fas fa-users-cog"></i>
+                  </div>
+                  <p>Roles and shifts auto-assigned.</p>
+              </div>
+              <div class="step animate-on-scroll">
+                  <div class="step-icon">
+                      <i class="fas fa-dollar-sign"></i>
+                  </div>
+                  <p>Jobs tracked and paid on completion.</p>
+              </div>
+              <div class="step animate-on-scroll">
+                  <div class="step-icon">
+                      <i class="fas fa-chart-bar"></i>
+                  </div>
+                  <p>Live dashboard shows progress.</p>
+              </div>
+          </div>
+      </div>
+  </section>
 
-    <section class="section testimonials" id="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>Success Stories</h2>
-                <p>What our customers say about Astorre</p>
-            </div>
-            <div class="testimonials-container">
-                <div class="testimonial">
-                    <p class="testimonial-content">"Astorre transformed how we manage our workforce. We've seen a 25% reduction in labor costs while improving customer satisfaction scores."</p>
-                    <div class="testimonial-author">Sarah Johnson</div>
-                    <div class="testimonial-role">Operations Director, Retail Chain</div>
-                </div>
-                <div class="testimonial">
-                    <p class="testimonial-content">"The replenishment predictions have been incredibly accurate. We've reduced out-of-stock situations and seen a noticeable increase in sales."</p>
-                    <div class="testimonial-author">Michael Chen</div>
-                    <div class="testimonial-role">Inventory Manager, Fashion Retailer</div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Value Pillars Section -->
+  <section class="value-pillars" id="value">
+      <div class="container">
+          <div class="section-header">
+              <h2 class="section-title animate-on-scroll">Value</h2>
+          </div>
+          <div class="pillars-container">
+              <div class="pillar-card animate-on-scroll">
+                  <div class="pillar-title">Accuracy</div>
+                  <p>Cut stockouts by up to 20%.</p>
+              </div>
+              <div class="pillar-card animate-on-scroll">
+                  <div class="pillar-title">Speed</div>
+                  <p>Shelves refilled up to 40% faster.</p>
+              </div>
+              <div class="pillar-card animate-on-scroll">
+                  <div class="pillar-title">Efficiency</div>
+                  <p>Labour costs are reduced by 15–25%.</p>
+              </div>
+              <div class="pillar-card animate-on-scroll">
+                  <div class="pillar-title">Transparency</div>
+                  <p>Clear roles and metrics for every shift.</p>
+              </div>
+              <div class="pillar-card animate-on-scroll">
+                  <div class="pillar-title">Flexibility</div>
+                  <p>Scale teams instantly to meet seasonal peaks.</p>
+              </div>
+          </div>
+      </div>
+  </section>
 
-    <section class="cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Ready to Transform Your Retail Operations?</h2>
-                <p>Join hundreds of retailers who have optimized their workforce with Astorre's intelligent platform.</p>
-                <div class="cta-buttons">
-                    <a href="#" class="btn btn-accent">Start Free Trial</a>
-                    <a href="#" class="btn btn-secondary">Schedule a Demo</a>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Target Audience Section -->
+  <section class="target-audience" id="who-its-for">
+      <div class="container">
+          <div class="section-header">
+              <h2 class="section-title animate-on-scroll">Who It's For</h2>
+          </div>
+          <div class="audience-cards">
+              <div class="audience-card animate-on-scroll">
+                  <h3>Convenience stores</h3>
+                  <p>Manage peaks and churn.</p>
+              </div>
+              <div class="audience-card animate-on-scroll">
+                  <h3>Specialty retail</h3>
+                  <p>Keep complex assortments always available.</p>
+              </div>
+          </div>
+      </div>
+  </section>
 
-    <section class="section" id="faq">
-        <div class="container">
-            <div class="section-title">
-                <h2>Frequently Asked Questions</h2>
-                <p>Everything you need to know about Astorre</p>
-            </div>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        How long does implementation take?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Most retailers are up and running with Astorre in 2-4 weeks. Implementation time depends on the complexity of your existing systems and the level of customization required.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        What systems does Astorre integrate with?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Astorre integrates with all major POS systems, workforce management tools, and inventory management platforms. Our API-first approach ensures compatibility.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        How accurate are your predictions?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Our AI models consistently achieve 95-98% accuracy in predicting staffing needs and inventory requirements. Accuracy improves over time as our system learns.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Comparison Table Section -->
+  <section class="comparison" id="why-astorre">
+      <div class="container">
+          <div class="section-header">
+              <h2 class="section-title animate-on-scroll">Why Astorre Stands Out</h2>
+              <p class="section-subtitle animate-on-scroll">Other tools cover pieces. Astorre runs the full loop.</p>
+          </div>
+          <div class="table-container animate-on-scroll">
+              <table class="comparison-table">
+                  <thead>
+                      <tr>
+                          <th>Functionality</th>
+                          <th>Workforce management</th>
+                          <th>Shelf analytics</th>
+                          <th>Task-management tools</th>
+                          <th>Astorre</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>Convenience retail focus</td>
+                          <td class="cross">✘</td>
+                          <td class="cross">✘</td>
+                          <td class="cross">✘</td>
+                          <td class="checkmark">✔️</td>
+                      </tr>
+                      <tr>
+                          <td>Predictive staffing</td>
+                          <td class="partial">Partial</td>
+                          <td class="cross">✘</td>
+                          <td class="cross">✘</td>
+                          <td class="checkmark">✔️</td>
+                      </tr>
+                      <tr>
+                          <td>Shelf forecasting</td>
+                          <td class="cross">✘</td>
+                          <td class="checkmark">✔️</td>
+                          <td class="cross">✘</td>
+                          <td class="checkmark">✔️</td>
+                      </tr>
+                      <tr>
+                          <td>AI tasking</td>
+                          <td class="cross">✘</td>
+                          <td class="cross">✘</td>
+                          <td class="partial">Partial</td>
+                          <td class="checkmark">✔️</td>
+                      </tr>
+                      <tr>
+                          <td>Piece-rate pay</td>
+                          <td class="cross">✘</td>
+                          <td class="cross">✘</td>
+                          <td class="cross">✘</td>
+                          <td class="checkmark">✔️</td>
+                      </tr>
+                      <tr>
+                          <td>Real-time monitoring</td>
+                          <td class="partial">Limited</td>
+                          <td class="checkmark">✔️</td>
+                          <td class="checkmark">✔️</td>
+                          <td class="checkmark">✔️ (comprehensive)</td>
+                      </tr>
+                      <tr>
+                          <td>ERP/POS integration</td>
+                          <td class="partial">Partial</td>
+                          <td class="checkmark">✔️</td>
+                          <td class="partial">Partial</td>
+                          <td class="checkmark">✔️</td>
+                      </tr>
+                      <tr>
+                          <td>Unified staff + stock</td>
+                          <td class="cross">✘</td>
+                          <td class="cross">✘</td>
+                          <td class="cross">✘</td>
+                          <td class="checkmark">✔️</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-about">
-                    <a href="#" class="logo">
-                        <i class="fas fa-brain logo-icon"></i> Astorre
-                    </a>
-                    <p>Intelligent workforce optimization for modern retailers.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h3>Product</h3>
-                    <ul>
-                        <li><a href="#">Features</a></li>
-                        <li><a href="#">Solutions</a></li>
-                        <li><a href="#">Pricing</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h3>Company</h3>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                &copy; 2025 Astorre. All rights reserved.
-            </div>
-        </div>
-    </footer>
+  <!-- RTBs Section -->
+  <section class="rtbs">
+      <div class="container">
+          <div class="section-header">
+              <h2 class="section-title animate-on-scroll">Why it works</h2>
+          </div>
+          <ul class="rtbs-list animate-on-scroll">
+              <li><strong>Operational depth</strong> — focused on the most painful retail processes: unloading, restocking, inventory.</li>
+              <li><strong>AI in real time</strong> — adapts as deliveries and demand change.</li>
+              <li><strong>Task-based pay</strong> — boosts engagement, reduces turnover, ensures compliance.</li>
+              <li><strong>Plug-and-play integrations</strong> — connects with leading ERP and POS.</li>
+              <li><strong>UK focus</strong> — designed for labour law, seasonal spikes and workforce churn.</li>
+          </ul>
+      </div>
+  </section>
 
-    <a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
-    </a>
+  <!-- Demo Section -->
+  <section class="demo">
+      <div class="container">
+          <div class="section-header">
+              <h2 class="section-title animate-on-scroll">See it in action</h2>
+              <p class="section-subtitle animate-on-scroll">Astorre turns delivery signals into aligned execution:</p>
+          </div>
+          <div class="demo-content animate-on-scroll">
+              <div class="demo-placeholder">
+                  <i class="fas fa-play-circle"></i>
+                  <p>Video demo coming soon</p>
+              </div>
+              <p>AI forecasts staff demand. Tasks appear instantly on dashboards. Staff complete jobs, receive compliant pay; managers see shelves replenished and reports clear. This is just the beginning — request a personal demo.</p>
+              <button class="btn btn-primary" onclick="scrollToSection('contact')">Contact us</button>
+          </div>
+      </div>
+  </section>
+
+  <!-- Founder Story Section -->
+  <section class="founder-story">
+      <div class="container">
+          <div class="section-header">
+              <h2 class="section-title animate-on-scroll">Founder Story</h2>
+          </div>
+          <div class="founder-content animate-on-scroll">
+              <div class="founder-image">
+                  <i class="fas fa-user-circle"></i>
+              </div>
+              <div class="founder-text">
+                  <p>Retail strategist Marina Shulga saw the same issue everywhere: overstretched staff, empty shelves, wasted labour. Astorre is her answer — structure and predictability for everyday retail.</p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="contact" id="contact">
+      <div class="container">
+          <div class="section-header">
+              <h2 class="section-title animate-on-scroll">Let's talk</h2>
+          </div>
+          <div class="contact-form-container animate-on-scroll">
+              <form class="contact-form" id="contactForm">
+                  <div class="form-group">
+                      <label for="name">Name *</label>
+                      <div class="input-wrapper">
+                          <i class="fas fa-user"></i>
+                          <input type="text" id="name" name="name" placeholder="Your full name" required>
+                      </div>
+                      <span class="error-message" id="nameError"></span>
+                  </div>
+                  
+                  <div class="form-group">
+                      <label for="email">Email *</label>
+                      <div class="input-wrapper">
+                          <i class="fas fa-envelope"></i>
+                          <input type="email" id="email" name="email" placeholder="your.email@company.com" required>
+                      </div>
+                      <span class="error-message" id="emailError"></span>
+                  </div>
+                  
+                  <div class="form-group">
+                      <label for="phone">Phone</label>
+                      <div class="input-wrapper">
+                          <i class="fas fa-phone"></i>
+                          <input type="tel" id="phone" name="phone" placeholder="+44 20 1234 5678">
+                      </div>
+                  </div>
+                  
+                  <div class="form-group">
+                      <label for="purpose">Purpose *</label>
+                      <div class="input-wrapper">
+                          <i class="fas fa-comment"></i>
+                          <select id="purpose" name="purpose" required>
+                              <option value="">Select an option</option>
+                              <option value="demo">Request Demo</option>
+                              <option value="investor">Investor Deck</option>
+                              <option value="press">Press & Partnerships</option>
+                              <option value="other">Other</option>
+                          </select>
+                      </div>
+                      <span class="error-message" id="purposeError"></span>
+                  </div>
+                  
+                  <button type="submit" class="btn btn-primary btn-large">Get in touch</button>
+              </form>
+              
+              <!-- Success Message -->
+              <div class="success-message" id="successMessage" style="display: none;">
+                  <div class="success-content">
+                      <i class="fas fa-check-circle"></i>
+                      <h3>Thank you!</h3>
+                      <p>We've received your message and will get back to you soon.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+      <div class="container">
+          <div class="footer-content">
+              <div class="footer-section">
+                  <div class="footer-logo">
+                      <img src="image.png" alt="Astorre Logo" class="logo-img">
+                      <span class="logo-text">Astorre</span>
+                  </div>
+                  <p class="footer-tagline">One platform for smarter retail.</p>
+              </div>
+              
+              <div class="footer-section">
+                  <h4>Navigation</h4>
+                  <ul class="footer-links">
+                      <li><a href="#challenges">Challenges</a></li>
+                      <li><a href="#how-it-works">How it works</a></li>
+                      <li><a href="#value">Value</a></li>
+                      <li><a href="#who-its-for">Who it's for</a></li>
+                      <li><a href="#why-astorre">Why Astorre</a></li>
+                      <li><a href="#contact">Contact us</a></li>
+                  </ul>
+              </div>
+              
+              <div class="footer-section">
+                  <h4>Contact us</h4>
+                  <p><a href="mailto:m.shulga@astorre.tech" class="footer-link">m.shulga@astorre.tech</a></p>
+              </div>
+              
+              <div class="footer-section">
+                  <div class="footer-legal">
+                      <p>Astorre Ltd. Registered in England and Wales.</p>
+                      <p>Company number: XXXXXXXX</p>
+                      <p>Registered office: XXXXX, London, UK</p>
+                      <p>© 2025 Astorre Ltd. All rights reserved.</p>
+                      <p>
+                          <a href="#" class="footer-link">Privacy Policy</a> | 
+                          <a href="#" class="footer-link">Terms of Service</a>
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
