@@ -1241,7 +1241,7 @@
             transform: translateX(-50%);
             width: 90%;
             max-width: 1000px;
-            background: white;
+            background: gray;
             padding: 20px;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -1260,6 +1260,10 @@
             opacity: 1;
             visibility: visible;
         }
+/* Cambiar color del texto solo del botón "Manage Preferences" dentro del cookie banner */
+.cookie-banner .btn-secondary {
+    color: var(--primary); /* reemplaza con el color que quieras */
+}
 
         .cookie-text {
             flex: 1;
@@ -1268,7 +1272,7 @@
         }
 
         .cookie-text a {
-            color: var(--primary);
+            color: var(--primary-dark);
             text-decoration: underline;
         }
 
@@ -1276,6 +1280,7 @@
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
+            color: var(--primary-dark);
         }
 
         /* Responsive Design */
@@ -1323,7 +1328,7 @@
                 left: -100%;
                 width: 100%;
                 height: calc(100vh - 80px);
-                background: white;
+                background: var(--primary-dark);
                 transition: var(--transition);
                 z-index: 999;
                 padding: 40px 20px;
