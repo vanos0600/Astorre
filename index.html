@@ -3,216 +3,1555 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Astorre - Retail Intelligence Solutions</title>
+    <title>Astorre - Intelligent Retail Management</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Leelawadee:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables - Brand Colors */
+        :root {
+            --primary: #2C52FE;
+            --primary-light: #5a75fe;
+            --primary-dark: #1a3dd9;
+            --secondary: #6b7280;
+            --accent: #10b981;
+            --light: #F7F8FA;
+            --light-secondary: #EDEFF2;
+            --dark: #1A1A1A;
+            --gray: #9ca3af;
+            --light-blue: #e0e7ff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --section-padding: 100px 0;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Leelawadee', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .section {
+            padding: var(--section-padding);
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            text-align: center;
+            font-size: 1rem;
+            border: none;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 14px rgba(44, 82, 254, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(44, 82, 254, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+            color: white;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-accent:hover {
+            background-color: #0da271;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Header Styles */
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--primary-dark);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .logo img {
+            height: 20px;
+            width: auto;
+        }
+
+        .logo:hover {
+            transform: scale(1.03);
+        }
+
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+            position: relative;
+            
+        }
+
+        nav ul li a {
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 8px 0;
+            color: white;
+            font-size: 17px;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: white;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,261.3C672,256,768,224,864,224C960,224,1056,256,1152,245.3C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center bottom;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            gap: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: 700;
+        }
+
+        .hero-tagline {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .animation-svg {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+        }
+
+        /* Stats Container */
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 80px;
+            flex-wrap: wrap;
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            min-width: 200px;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px) scale(1.03);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--light-secondary);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 0;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .feature-card:hover::before {
+            height: 100%;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--light);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: var(--primary);
+            font-size: 2rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .feature-card:hover .feature-icon {
+            background: var(--primary);
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--secondary);
+        }
+
+        /* Problem Solution Section */
+        .problem-solution {
+            background: var(--light);
+        }
+
+        .problem-solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .problem-column, .solution-column {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .problem-column:hover, .solution-column:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .problem-column h3, .solution-column h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+        }
+
+        .problem-column h3 i, .solution-column h3 i {
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+
+        .problem-column h3 i {
+            color: #ef4444;
+        }
+
+        .solution-column h3 i {
+            color: var(--accent);
+        }
+
+        .problem-list, .solution-list {
+            list-style: none;
+        }
+
+        .problem-list li, .solution-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .problem-list li::before {
+            content: '✘';
+            position: absolute;
+            left: 0;
+            color: #ef4444;
+            font-weight: bold;
+        }
+
+        .solution-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* How It Works Section */
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 40px 25px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .step:hover::after {
+            transform: scaleX(1);
+        }
+
+        .step-icon {
+            position: relative;
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .step:hover .step-icon {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .step-icon i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        .step:hover .step-icon i {
+            color: white;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 35px;
+            height: 35px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1rem;
+            z-index: 3;
+        }
+
+        .step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .step p {
+            color: var(--secondary);
+        }
+
+        /* Value Pillars Section */
+        .value-pillars {
+            background: var(--light);
+        }
+
+        .pillars-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .pillar-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: var(--primary);
+            opacity: 0.05;
+            transition: var(--transition);
+            z-index: 0;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .pillar-card:hover::before {
+            height: 100%;
+        }
+
+        .pillar-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--light);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary);
+            font-size: 1.8rem;
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+
+        .pillar-card:hover .pillar-icon {
+            background: var(--primary);
+            color: white;
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .pillar-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+            position: relative;
+            z-index: 1;
+        }
+
+        .pillar-card p {
+            color: var(--secondary);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Target Audience Section */
+        .audience-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .audience-card {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .audience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .audience-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--light);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: var(--primary);
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+
+        .audience-card:hover .audience-icon {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .audience-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .audience-card p {
+            color: var(--secondary);
+        }
+
+        /* Comparison Table Section */
+        .comparison-section {
+            background: var(--light);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 50px;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--light-secondary);
+        }
+
+        .comparison-table th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(44, 82, 254, 0.03);
+        }
+
+        .comparison-table .feature-name {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .comparison-table .checkmark {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .comparison-table .cross {
+            color: #ef4444;
+            font-weight: bold;
+        }
+
+        .comparison-table .partial {
+            color: #f59e0b;
+            font-weight: bold;
+        }
+
+        /* RTBs Section */
+        .rtbs-list {
+            max-width: 800px;
+            margin: 50px auto 0;
+        }
+
+        .rtb-item {
+            margin-bottom: 25px;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        .rtb-item::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .rtb-item strong {
+            color: var(--primary);
+        }
+
+        /* Demo Section */
+        .demo-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+
+        .demo-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .demo-placeholder {
+            width: 100%;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            margin: 50px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+        }
+
+        .demo-placeholder i {
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Founder Section */
+        .founder-section {
+            background: var(--light);
+        }
+
+        .founder-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .founder-image {
+            flex: 1;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .founder-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .founder-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .founder-info {
+            flex: 1;
+        }
+
+        .founder-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .founder-info p {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Contact Form Section */
+        .contact-section {
+            background: white;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 50px auto 0;
+            background: var(--light);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--light-secondary);
+            border-radius: 8px;
+            font-family: 'Leelawadee', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(44, 82, 254, 0.1);
+        }
+
+        .form-submit {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: var(--light);
+        }
+
+        .testimonials-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .testimonial {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--secondary);
+            position: relative;
+            padding: 0 20px;
+            line-height: 1.8;
+        }
+
+        .testimonial-content::before,
+        .testimonial-content::after {
+            content: '"';
+            font-size: 4rem;
+            color: var(--light-secondary);
+            position: absolute;
+            line-height: 1;
+            opacity: 0.5;
+        }
+
+        .testimonial-content::before {
+            top: -15px;
+            left: -5px;
+        }
+
+        .testimonial-content::after {
+            bottom: -40px;
+            right: -5px;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--dark);
+            margin-top: 30px;
+        }
+
+        .testimonial-role {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,261.3C672,256,768,224,864,224C960,224,1056,256,1152,245.3C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center bottom;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 80px 0 0;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-about p {
+            margin: 20px 0;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul li a {
+            color: var(--gray);
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-links ul li a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-links ul li i {
+            margin-right: 10px;
+            color: var(--primary);
+            width: 16px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: 0 4px 20px rgba(44, 82, 254, 0.3);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(44, 82, 254, 0.4);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        .float {
+            animation: float 3s infinite ease-in-out;
+        }
+
+        /* Cookie Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1000px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .cookie-banner.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cookie-text {
+            flex: 1;
+            min-width: 300px;
+            color: var(--dark);
+        }
+
+        .cookie-text a {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .founder-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+
+            .process-steps {
+                flex-direction: column;
+            }
+
+            .step {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                transition: var(--transition);
+                z-index: 999;
+                padding: 40px 20px;
+                overflow-y: auto;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .header-buttons {
+                display: none;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+
+            .hero {
+                padding: 150px 0 80px;
+            }
+
+            .problem-solution-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .audience-container {
+                grid-template-columns: 1fr;
+            }
+
+            .cookie-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cookie-text {
+                min-width: auto;
+            }
+
+            .cookie-buttons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-tagline {
+                font-size: 1.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .cta-content h2 {
+                font-size: 2.2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .section {
+                padding: 70px 0;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .feature-card, .benefit-item, .step {
+                padding: 25px 20px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-text">
+            <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. 
+                <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+            </p>
+        </div>
+        <div class="cookie-buttons">
+            <button class="btn btn-primary" id="acceptCookies">Accept</button>
+            <button class="btn btn-secondary" id="manageCookies">Manage Preferences</button>
+        </div>
+    </div>
+
     <!-- Header -->
     <header id="header">
         <div class="header-container">
             <a href="#" class="logo">
-                <i class="fas fa-brain logo-icon"></i>
-                Astorre
+                <img src="logo/image.png" alt="Astorre Logo">
+
             </a>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
-            <nav id="nav">
+            <nav>
                 <ul>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#benefits">Benefits</a></li>
-                    <li><a href="#how-it-works">How It Works</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#problem-solution">Challenges</a></li>
+                    <li><a href="#how-it-works">How it works</a></li>
+                    <li><a href="#value-pillars">Value</a></li>
+                    <li><a href="#target-audience">Who it's for</a></li>
+                    <li><a href="#comparison">Why Astorre</a></li>
+                    <li><a href="#contact">Contact us</a></li>
                 </ul>
             </nav>
             <div class="header-buttons">
-                <a href="#" class="btn btn-secondary">Log In</a>
-                <a href="#" class="btn btn-primary">Get Started</a>
+                <a href="#contact" class="btn btn-secondary">Contact us</a>
+                <a href="#contact" class="btn btn-primary">Request Demo</a>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Transform Retail Operations with AI</h1>
-                <p class="hero-tagline">Intelligent workforce optimization for modern retailers</p>
-                <p class="hero-subtitle">Astorre uses advanced AI to predict staffing needs, optimize schedules, and maximize sales through data-driven insights.</p>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Astorre in role, retail under control</h1>
+                <p class="hero-tagline">From delivery to shelf — fully aligned by AI</p>
+                <p class="hero-subtitle">Astorre unites predictive staffing, AI-driven task orchestration, and piece-rate pay in a single platform — giving UK retailers leaner costs, fuller shelves, and engaged teams.</p>
                 <div class="hero-buttons">
-                    <a href="#" class="btn btn-accent">Book a Demo</a>
-                    <a href="#" class="btn btn-secondary">Learn More</a>
+                    <a href="#contact" class="btn btn-primary">Request Demo</a>
                 </div>
             </div>
+            <div class="hero-image">
+                <svg class="animation-svg" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+                    <!-- AI Visualization -->
+                    <circle cx="400" cy="250" r="150" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="2" />
+                    <circle cx="400" cy="250" r="120" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="2" />
+                    <circle cx="400" cy="250" r="90" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="2" />
+                    
+                    <!-- Central AI Icon -->
+                    <circle cx="400" cy="250" r="60" fill="rgba(255,255,255,0.2)" class="pulse" />
+                    <path d="M380 230L400 250L430 220" stroke="white" stroke-width="3" fill="none" />
+                    
+                    <!-- Data Points -->
+                    <circle cx="300" cy="150" r="10" fill="rgba(255,255,255,0.7)" class="float" style="animation-delay: 0s;" />
+                    <circle cx="500" cy="350" r="10" fill="rgba(255,255,255,0.7)" class="float" style="animation-delay: 0.5s;" />
+                    <circle cx="250" cy="300" r="10" fill="rgba(255,255,255,0.7)" class="float" style="animation-delay: 1s;" />
+                    <circle cx="550" cy="200" r="10" fill="rgba(255,255,255,0.7)" class="float" style="animation-delay: 1.5s;" />
+                    
+                    <!-- Connection Lines -->
+                    <line x1="400" y1="250" x2="300" y2="150" stroke="rgba(255,255,255,0.5)" stroke-width="2" />
+                    <line x1="400" y1="250" x2="500" y2="350" stroke="rgba(255,255,255,0.5)" stroke-width="2" />
+                    <line x1="400" y1="250" x2="250" y2="300" stroke="rgba(255,255,255,0.5)" stroke-width="2" />
+                    <line x1="400" y1="250" x2="550" y2="200" stroke="rgba(255,255,255,0.5)" stroke-width="2" />
+                </svg>
+            </div>
+        </div>
+        
+        <div class="container">
             <div class="stats-container">
                 <div class="stat-item">
+                    <div class="stat-number">+95%</div>
+                    <div class="stat-label">Inventory Accuracy</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">-40%</div>
+                    <div class="stat-label">Operational Costs</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">+65%</div>
+                    <div class="stat-label">Efficiency</div>
+                </div>
+                <div class="stat-item">
                     <div class="stat-number">24/7</div>
-                    <div class="stat-label">Real-time Monitoring</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">98%</div>
-                    <div class="stat-label">Accuracy</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">30%</div>
-                    <div class="stat-label">Labor Cost Reduction</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">99%</div>
-                    <div class="stat-label">Customer Satisfaction</div>
+                    <div class="stat-label">Support</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="section features" id="features">
+    <!-- Problem Solution Section -->
+    <section class="section problem-solution" id="problem-solution">
         <div class="container">
             <div class="section-title">
-                <h2>What Astorre Brings</h2>
-                <p>Intelligent solutions for modern retail challenges</p>
+                <h2>From chaos to clarity</h2>
+                <p>Transforming retail challenges into intelligent solutions</p>
             </div>
             
-            <!-- Animated Retail Illustration -->
-            <div class="features-animation">
-                <div class="animation-container">
-                    <svg class="animation-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Store Background -->
-                        <rect x="50" y="50" width="700" height="300" fill="#f0f4f8" stroke="#b8c2cc" stroke-width="2" rx="10"/>
-                        
-                        <!-- Store Layout -->
-                        <path class="store-path" d="M100,100 L700,100 L700,300 L100,300 Z" fill="none" stroke="#4361ee" stroke-width="3" stroke-dasharray="10,5"/>
-                        
-                        <!-- Shelves -->
-                        <rect x="150" y="120" width="180" height="160" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1" rx="4"/>
-                        <rect x="350" y="120" width="180" height="160" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1" rx="4"/>
-                        <rect x="550" y="120" width="180" height="160" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1" rx="4"/>
-                        
-                        <!-- Shelf Items -->
-                        <rect class="shelf-item" x="160" y="130" width="30" height="40" fill="#4895ef" rx="2"/>
-                        <rect class="shelf-item" x="200" y="130" width="30" height="40" fill="#f72585" rx="2"/>
-                        <rect class="shelf-item" x="240" y="130" width="30" height="40" fill="#4cc9f0" rx="2"/>
-                        <rect class="shelf-item" x="280" y="130" width="30" height="40" fill="#7209b7" rx="2"/>
-                        
-                        <rect class="shelf-item" x="360" y="230" width="30" height="40" fill="#4895ef" rx="2"/>
-                        <rect class="shelf-item" x="400" y="230" width="30" height="40" fill="#f72585" rx="2"/>
-                        <rect class="shelf-item" x="440" y="230" width="30" height="40" fill="#4cc9f0" rx="2"/>
-                        <rect class="shelf-item" x="480" y="230" width="30" height="40" fill="#7209b7" rx="2"/>
-                        
-                        <!-- Team Members -->
-                        <g class="team-member">
-                            <circle cx="250" cy="230" r="15" fill="#4361ee"/>
-                            <rect x="235" y="250" width="30" height="50" fill="#3a0ca3" rx="2"/>
-                        </g>
-                        <g class="team-member">
-                            <circle cx="450" cy="180" r="15" fill="#f72585"/>
-                            <rect x="435" y="200" width="30" height="50" fill="#b5179e" rx="2"/>
-                        </g>
-                        <g class="team-member">
-                            <circle cx="600" cy="210" r="15" fill="#4cc9f0"/>
-                            <rect x="585" y="230" width="30" height="50" fill="#4895ef" rx="2"/>
-                        </g>
-                        
-                        <!-- Performance Graph -->
-                        <g class="performance-graph">
-                            <rect x="620" y="150" width="20" height="100" fill="#e2e8f0" rx="2"/>
-                            <rect x="620" y="150" width="20" height="70" fill="#4895ef" rx="2"/>
-                            
-                            <rect x="650" y="150" width="20" height="100" fill="#e2e8f0" rx="2"/>
-                            <rect x="650" y="150" width="20" height="40" fill="#4895ef" rx="2"/>
-                            
-                            <rect x="680" y="150" width="20" height="100" fill="#e2e8f0" rx="2"/>
-                            <rect x="680" y="150" width="20" height="90" fill="#4895ef" rx="2"/>
-                        </g>
-                        
-                        <!-- AI Brain -->
-                        <g transform="translate(100, 180)">
-                            <path d="M10,20 Q30,5 50,20 T90,20" fill="none" stroke="#4361ee" stroke-width="2"/>
-                            <path d="M10,15 Q30,0 50,15 T90,15" fill="none" stroke="#4361ee" stroke-width="2"/>
-                            <path d="M10,10 Q30,-5 50,10 T90,10" fill="none" stroke="#4361ee" stroke-width="2"/>
-                            <circle cx="50" cy="15" r="8" fill="#4361ee" opacity="0.7"/>
-                        </g>
-                        
-                        <!-- Replenishment Arrow -->
-                        <g transform="translate(300, 280)">
-                            <path d="M0,0 L20,-20 L40,0" fill="none" stroke="#3a0ca3" stroke-width="2"/>
-                            <line x1="20" y1="-20" x2="20" y2="-50" stroke="#3a0ca3" stroke-width="2"/>
-                        </g>
-                    </svg>
-                </div>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Understands Store Rhythms</h3>
-                    <p>Continuously monitors store activity to optimize staffing and schedules teams according to real-time demand patterns.</p>
+            <div class="problem-solution-grid">
+                <div class="problem-column">
+                    <h3><i class="fas fa-exclamation-circle"></i> The Problem</h3>
+                    <ul class="problem-list">
+                        <li>50% staff churn in convenience retail.</li>
+                        <li>Seasonal peaks lift labour demand 40%.</li>
+                        <li>Stockouts cost over £1bn a year.</li>
+                        <li>Systems don't connect: staff, stock, pay misaligned.</li>
+                    </ul>
                 </div>
                 
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-box-open"></i>
-                    </div>
-                    <h3>Anticipates Replenishment</h3>
-                    <p>Proactively manages restocking needs before shelves run low, preventing stockouts and lost sales.</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-people-arrows"></i>
-                    </div>
-                    <h3>Aligns Team Movements</h3>
-                    <p>Coordinates workforce deployment with in-store activity, ensuring the right people are in the right place at the right time.</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h3>Performance Incentives</h3>
-                    <p>Encourages consistent performance through targeted rewards and pay-for-performance models.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Benefits Section -->
-    <section class="section benefits" id="benefits">
-        <div class="container">
-            <div class="section-title">
-                <h2>Business Benefits</h2>
-                <p>How Astorre transforms retail operations</p>
-            </div>
-            
-            <div class="benefits-container">
-                <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Increase Sales</h3>
-                    <p>Optimized staffing during peak hours leads to better customer service and increased sales conversion.</p>
-                </div>
-                
-                <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fas fa-money-bill-wave"></i>
-                    </div>
-                    <h3>Reduce Costs</h3>
-                    <p>Eliminate overstaffing during slow periods and reduce labor costs by up to 30%.</p>
-                </div>
-                
-                <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fas fa-smile"></i>
-                    </div>
-                    <h3>Improve Satisfaction</h3>
-                    <p>Happy employees and satisfied customers through better workload distribution.</p>
+                <div class="solution-column">
+                    <h3><i class="fas fa-check-circle"></i> The Solution</h3>
+                    <ul class="solution-list">
+                        <li>One loop: from delivery to shelf.</li>
+                        <li>Predictive staffing: AI forecasts demand.</li>
+                        <li>AI tasking: roles and shifts set on the fly.</li>
+                        <li>Piece-rate pay: fair, legal, motivating.</li>
+                        <li>One dashboard: managers and staff see all.</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -223,136 +1562,329 @@
         <div class="container">
             <div class="section-title">
                 <h2>How Astorre Works</h2>
-                <p>Simple implementation, powerful results</p>
+                <p>Intelligent retail management in 5 simple steps</p>
             </div>
             
             <div class="process-steps">
                 <div class="step">
                     <div class="step-icon">
-                        <i class="fas fa-plug"></i>
-                        <div class="step-number">1</div>
+                        <i class="fas fa-database"></i>
+                        <span class="step-number">1</span>
                     </div>
-                    <h3>Connect Systems</h3>
-                    <p>Integrate with your existing POS, inventory, and scheduling systems.</p>
+                    <h3>Data Integration</h3>
+                    <p>Supplier & ERP data combined for a unified view.</p>
                 </div>
                 
                 <div class="step">
                     <div class="step-icon">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                        <div class="step-number">2</div>
+                        <i class="fas fa-brain"></i>
+                        <span class="step-number">2</span>
                     </div>
-                    <h3>Analyze Data</h3>
-                    <p>Our AI processes historical and real-time data to identify patterns.</p>
+                    <h3>AI Prediction</h3>
+                    <p>AI predicts demand in real time based on multiple factors.</p>
                 </div>
                 
                 <div class="step">
                     <div class="step-icon">
-                        <i class="fas fa-lightbulb"></i>
-                        <div class="step-number">3</div>
+                        <i class="fas fa-tasks"></i>
+                        <span class="step-number">3</span>
                     </div>
-                    <h3>Generate Insights</h3>
-                    <p>Receive actionable recommendations for staffing and operations.</p>
+                    <h3>Task Assignment</h3>
+                    <p>Roles and shifts auto-assigned based on predictions.</p>
                 </div>
                 
                 <div class="step">
                     <div class="step-icon">
-                        <i class="fas fa-rocket"></i>
-                        <div class="step-number">4</div>
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span class="step-number">4</span>
                     </div>
-                    <h3>Optimize Operations</h3>
-                    <p>Implement changes and see measurable improvements in efficiency.</p>
+                    <h3>Performance Tracking</h3>
+                    <p>Jobs tracked and paid on completion with full transparency.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-chart-line"></i>
+                        <span class="step-number">5</span>
+                    </div>
+                    <h3>Live Monitoring</h3>
+                    <p>Live dashboard shows progress and key metrics in real-time.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="section testimonials" id="testimonials">
+    <!-- Value Pillars Section -->
+    <section class="section value-pillars" id="value-pillars">
         <div class="container">
             <div class="section-title">
-                <h2>Success Stories</h2>
-                <p>What our customers say about Astorre</p>
+                <h2>Value Pillars</h2>
+                <p>The key benefits that set Astorre apart</p>
             </div>
             
-            <div class="testimonials-container">
-                <div class="testimonial">
-                    <div class="testimonial-content">
-                        "Astorre transformed how we manage our workforce. We've seen a 25% reduction in labor costs while improving customer satisfaction scores by 18%."
+            <div class="pillars-container">
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-bullseye"></i>
                     </div>
-                    <div class="testimonial-author">Sarah Johnson</div>
-                    <div class="testimonial-role">Operations Director, Retail Chain</div>
+                    <h3>Accuracy</h3>
+                    <p>Cut stockouts by up to 20% with precise inventory forecasting.</p>
                 </div>
                 
-                <div class="testimonial">
-                    <div class="testimonial-content">
-                        "The replenishment predictions have been incredibly accurate. We've reduced out-of-stock situations by 90% and seen a noticeable increase in sales."
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-tachometer-alt"></i>
                     </div>
-                    <div class="testimonial-author">Michael Chen</div>
-                    <div class="testimonial-role">Inventory Manager, Fashion Retailer</div>
+                    <h3>Speed</h3>
+                    <p>Shelves refilled up to 40% faster with optimized task allocation.</p>
+                </div>
+                
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Efficiency</h3>
+                    <p>Labour costs reduced by 15–25% through AI-driven optimization.</p>
+                </div>
+                
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Transparency</h3>
+                    <p>Clear roles and metrics for every shift with real-time visibility.</p>
+                </div>
+                
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </div>
+                    <h3>Flexibility</h3>
+                    <p>Scale teams instantly to meet seasonal peaks and demand fluctuations.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta">
+    <!-- Target Audience Section -->
+    <section class="section target-audience" id="target-audience">
         <div class="container">
-            <div class="cta-content">
-                <h2>Ready to Transform Your Retail Operations?</h2>
-                <p>Join hundreds of retailers who have optimized their workforce with Astorre's intelligent platform.</p>
+            <div class="section-title">
+                <h2>Who It's For</h2>
+                <p>Astorre is designed for modern retail challenges</p>
+            </div>
+            
+            <div class="audience-container">
+                <div class="audience-card">
+                    <div class="audience-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3>Convenience Stores</h3>
+                    <p>Manage peaks and churn with AI-driven staffing and inventory solutions.</p>
+                </div>
+                
+                <div class="audience-card">
+                    <div class="audience-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <h3>Specialty Retail</h3>
+                    <p>Keep complex assortments always available with predictive inventory management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="section comparison-section" id="comparison">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Astorre Stands Out</h2>
+                <p>Other tools cover pieces. Astorre runs the full loop.</p>
+            </div>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Functionality</th>
+                        <th>Workforce Management</th>
+                        <th>Shelf Analytics</th>
+                        <th>Task Management Tools</th>
+                        <th>Astorre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="feature-name">Convenience retail focus</td>
+                        <td class="cross">✘</td>
+                        <td class="cross">✘</td>
+                        <td class="cross">✘</td>
+                        <td class="checkmark">✔️</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Predictive staffing</td>
+                        <td class="partial">Partial</td>
+                        <td class="cross">✘</td>
+                        <td class="cross">✘</td>
+                        <td class="checkmark">✔️</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Shelf forecasting</td>
+                        <td class="cross">✘</td>
+                        <td class="checkmark">✔️</td>
+                        <td class="cross">✘</td>
+                        <td class="checkmark">✔️</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">AI tasking</td>
+                        <td class="cross">✘</td>
+                        <td class="cross">✘</td>
+                        <td class="partial">Partial</td>
+                        <td class="checkmark">✔️</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Piece-rate pay</td>
+                        <td class="cross">✘</td>
+                        <td class="cross">✘</td>
+                        <td class="cross">✘</td>
+                        <td class="checkmark">✔️</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Real-time monitoring</td>
+                        <td class="partial">Limited</td>
+                        <td class="checkmark">✔️</td>
+                        <td class="checkmark">✔️</td>
+                        <td class="checkmark">✔️ (comprehensive)</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">ERP/POS integration</td>
+                        <td class="partial">Partial</td>
+                        <td class="checkmark">✔️</td>
+                        <td class="partial">Partial</td>
+                        <td class="checkmark">✔️</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Unified staff + stock</td>
+                        <td class="cross">✘</td>
+                        <td class="cross">✘</td>
+                        <td class="cross">✘</td>
+                        <td class="checkmark">✔️</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- RTBs Section -->
+    <section class="section rtbs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why It Works</h2>
+                <p>The technology behind Astorre's success</p>
+            </div>
+            
+            <div class="rtbs-list">
+                <div class="rtb-item">
+                    <strong>Operational depth</strong> — focused on the most painful retail processes: unloading, restocking, inventory.
+                </div>
+                <div class="rtb-item">
+                    <strong>AI in real time</strong> — adapts as deliveries and demand change.
+                </div>
+                <div class="rtb-item">
+                    <strong>Task-based pay</strong> — boosts engagement, reduces turnover, ensures compliance.
+                </div>
+                <div class="rtb-item">
+                    <strong>Plug-and-play integrations</strong> — connects with leading ERP and POS.
+                </div>
+                <div class="rtb-item">
+                    <strong>UK focus</strong> — designed for labour law, seasonal spikes and workforce churn.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="section demo-section" id="demo">
+        <div class="container">
+            <div class="demo-content">
+                <h2>See It In Action</h2>
+                <p>Astorre turns delivery signals into aligned execution: AI forecasts staff demand, tasks appear instantly on dashboards, staff complete jobs, receive compliant pay; managers see shelves replenished and reports clear. This is just the beginning — request a personal demo.</p>
+                
+                <div class="demo-placeholder">
+                    <i class="fas fa-play-circle"></i>
+                </div>
+                
                 <div class="cta-buttons">
-                    <a href="#" class="btn btn-accent">Start Free Trial</a>
-                    <a href="#" class="btn btn-secondary">Schedule a Demo</a>
+                    <a href="#contact" class="btn btn-accent">Contact us</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="section" id="faq">
+    <!-- Founder Section -->
+    <section class="section founder-section" id="founder">
         <div class="container">
             <div class="section-title">
-                <h2>Frequently Asked Questions</h2>
-                <p>Everything you need to know about Astorre</p>
+                <h2>Founder Story</h2>
+                <p>The vision behind Astorre</p>
             </div>
             
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        How long does implementation take?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            Most retailers are up and running with Astorre in 2-4 weeks. Implementation time depends on the complexity of your existing systems and the level of customization required.
-                        </div>
-                    </div>
+            <div class="founder-content">
+                <div class="founder-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500' fill='%23EDEFF2'%3E%3Crect width='400' height='500'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='24' fill='%239CA3AF'%3EFounder Image%3C/text%3E%3C/svg%3E" alt="Marina Shulga - Founder of Astorre">
                 </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        What systems does Astorre integrate with?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            Astorre integrates with all major POS systems, workforce management tools, and inventory management platforms. Our API-first approach ensures compatibility with virtually any retail system.
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        How accurate are your predictions?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            Our AI models consistently achieve 95-98% accuracy in predicting staffing needs and inventory requirements. Accuracy improves over time as our system learns from your specific store patterns.
-                        </div>
-                    </div>
+                <div class="founder-info">
+                    <h3>Marina Shulga</h3>
+                    <p>Retail strategist Marina Shulga saw the same issue everywhere: overstretched staff, empty shelves, wasted labour. Astorre is her answer — structure and predictability for everyday retail.</p>
+                    <p>With years of experience in retail operations and technology, Marina founded Astorre to solve the fundamental challenges that retailers face in inventory management, staffing, and operational efficiency.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Let's Talk</h2>
+                <p>Get in touch to learn how Astorre can transform your retail operations</p>
+            </div>
+            
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="purpose">Purpose</label>
+                    <select id="purpose" name="purpose" required>
+                        <option value="">Select an option</option>
+                        <option value="demo">Request Demo</option>
+                        <option value="investor">Investor Deck</option>
+                        <option value="press">Press & Partnerships</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message (Optional)</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+                
+                <div class="form-submit">
+                    <button type="submit" class="btn btn-primary">Get in touch</button>
+                </div>
+            </form>
         </div>
     </section>
 
@@ -362,26 +1894,27 @@
             <div class="footer-container">
                 <div class="footer-about">
                     <div class="footer-logo">
-                        <i class="fas fa-brain logo-icon"></i>
+                        <i class="fas fa-warehouse"></i>
                         Astorre
                     </div>
-                    <p>Intelligent workforce optimization for modern retailers. Transform your operations with AI-driven insights.</p>
+                    <p>One platform for smarter retail. Astorre unites predictive staffing, AI-driven task orchestration, and piece-rate pay in a single platform.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 
                 <div class="footer-links">
-                    <h3>Product</h3>
+                    <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#">Features</a></li>
-                        <li><a href="#">Solutions</a></li>
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">Integrations</a></li>
-                        <li><a href="#">Roadmap</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#problem-solution">Challenges</a></li>
+                        <li><a href="#how-it-works">How it works</a></li>
+                        <li><a href="#value-pillars">Value</a></li>
+                        <li><a href="#target-audience">Who it's for</a></li>
+                        <li><a href="#comparison">Why Astorre</a></li>
                     </ul>
                 </div>
                 
@@ -389,36 +1922,142 @@
                     <h3>Resources</h3>
                     <ul>
                         <li><a href="#">Blog</a></li>
-                        <li><a href="#">Case Studies</a></li>
-                        <li><a href="#">Webinars</a></li>
+                        <li><a href="#">Help Center</a></li>
                         <li><a href="#">Documentation</a></li>
-                        <li><a href="#">API Reference</a></li>
+                        <li><a href="#">Webinars</a></li>
+                        <li><a href="#">Community</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links">
-                    <h3>Company</h3>
+                    <h3>Contact</h3>
                     <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Partners</a></li>
-                        <li><a href="#">Legal</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Astorre Ltd. Registered in England and Wales.</li>
+                        <li><i class="fas fa-phone"></i> +44 (0) 123 456 789</li>
+                        <li><i class="fas fa-envelope"></i> m.shulga@astorre.tech</li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="copyright">
-                &copy; 2023 Astorre. All rights reserved.
+        </div>
+        
+        <div class="copyright">
+            <div class="container">
+                <p>&copy; 2025 Astorre Ltd. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                <p>Company number: XXXXXXXX | Registered office: XXXXX, London, UK</p>
             </div>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTop">
+    <div class="back-to-top">
         <i class="fas fa-arrow-up"></i>
     </div>
 
-
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = nav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Back to Top Button
+        const backToTopBtn = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Animate elements on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.feature-card, .benefit-item, .step, .testimonial, .stat-item, .pillar-card, .audience-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('fade-in');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        // Initial call to check elements in view on page load
+        window.addEventListener('load', animateOnScroll);
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message. We will get back to you soon!');
+                contactForm.reset();
+            });
+        }
+        
+        // Cookie Banner
+        const cookieBanner = document.getElementById('cookieBanner');
+        const acceptCookies = document.getElementById('acceptCookies');
+        const manageCookies = document.getElementById('manageCookies');
+        
+        // Show cookie banner if not accepted yet
+        if (!localStorage.getItem('cookiesAccepted')) {
+            setTimeout(() => {
+                cookieBanner.classList.add('active');
+            }, 1000);
+        }
+        
+        // Accept cookies
+        if (acceptCookies) {
+            acceptCookies.addEventListener('click', () => {
+                localStorage.setItem('cookiesAccepted', 'true');
+                cookieBanner.classList.remove('active');
+            });
+        }
+        
+        // Manage cookies
+        if (manageCookies) {
+            manageCookies.addEventListener('click', () => {
+                alert('Cookie preferences management coming soon!');
+            });
+        }
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.style.padding = '10px 0';
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.padding = '15px 0';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+    
 </body>
 </html>
