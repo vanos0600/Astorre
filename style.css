@@ -79,15 +79,18 @@
             color: var(--white);
             text-decoration: none;
             transition: var(--transition);
+            filter: drop-shadow(0 6px 12px rgba(44, 82, 254, 0.6)); 
         }
 
         .logo img {
             height: 30px;
             margin-right: 0px;
+           filter: drop-shadow(0 6px 12px rgba(44, 82, 254, 0.6)); 
         }
 
         .logo:hover {
             transform: translateY(-2px);
+            filter: drop-shadow(0 6px 12px rgba(44, 82, 254, 0.6)); 
         }
 
         nav ul {
@@ -192,16 +195,9 @@
             transform: translateY(-3px);
         }
 
-        .btn-rocket {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            box-shadow: var(--shadow);
-        }
+       
 
-        .btn-rocket:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(44, 82, 254, 0.3);
-        }
+       
 
         /* Hero Section */
         .hero {
@@ -392,122 +388,397 @@
             border-bottom: none;
         }
 
-        .problem-icon {
-            color: black;
-        }
 
-        .solution-icon {
-            color: #25d2e9;
-        }
+   
+.problem-list .cross-icon {
+    color: var(--dark) !important; /* #1F2937 - Dark Gray para problemas */
+    font-size: 1.3rem !important; /* Tamaño aumentado */
+    min-width: 25px !important;
+}
+
+.solution-list .check-icon {
+    color: var(--accent) !important; /* #06B6D4 - Turquesa para soluciones */
+    font-size: 1.3rem !important; /* Tamaño aumentado */
+    min-width: 25px !important;
+}
+
+/* Opcional: Asegurar consistencia en toda la página */
+.cross-icon {
+    color: var(--dark);
+    font-size: 1.3rem;
+}
+
+.check-icon {
+    color: var(--accent);
+    font-size: 1.3rem;
+}
+
+/* Ajustar el espaciado para acomodar iconos más grandes */
+.problem-list li, .solution-list li {
+    align-items: center; /* Centrar verticalmente con iconos más grandes */
+    gap: 15px; /* Más espacio entre icono y texto */
+}
+
+
+
+/* Forzar visualización de iconos en H3 */
+.problem-col h3 i {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: var(--dark);
+}
+
+.solution-col h3 i {
+    display: inline-block !important;  
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: var(--accent); 
+}
+     
+
+/* ===== EFECTO DE BORDES CON SOMBRAS PARA LOS CONTENEDORES COMPLETOS ===== */
+.problem-col, .solution-col {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto específico para problemas - borde azul primario con sombra */
+.problem-col {
+    border-left-color: var(--primary);
+    box-shadow: 0 4px 20px rgba(44, 82, 254, 0.15);
+}
+
+/* Efecto específico para soluciones - borde turquesa con sombra */
+.solution-col {
+    border-left-color: var(--accent);
+    box-shadow: 0 4px 20px rgba(6, 182, 212, 0.15);
+}
+
+/* Efecto hover para mejor interactividad */
+.problem-col:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(44, 82, 254, 0.25);
+}
+
+.solution-col:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(6, 182, 212, 0.25);
+}
+
+/* Efecto de brillo sutil en el borde izquierdo al hacer hover */
+.problem-col::before, .solution-col::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -5px;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+        rgba(255,255,255,0.8) 0%, 
+        rgba(255,255,255,0.4) 50%, 
+        rgba(255,255,255,0.8) 100%);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.problem-col:hover::before, .solution-col:hover::before {
+    opacity: 1;
+    left: 0;
+}
+
+/* Restaurar el estilo original de los elementos de lista */
+.problem-list li, .solution-list li {
+    background: transparent;
+    padding: 10px 0;
+    margin-bottom: 8px;
+    border-radius: 0;
+    box-shadow: none;
+    border-left: none;
+    transition: none;
+    display: flex;
+    align-items: center;
+}
+
+/* Ajustar iconos para que coincidan con el nuevo diseño */
+.problem-list li i, .solution-list li i {
+    margin-right: 12px;
+    font-size: 1.1rem;
+    min-width: 20px;
+}
+
+/* Estilos específicos para iconos */
+.problem-list li i {
+    color: var(--dark);
+}
+
+.solution-list li i {
+    color: var(--accent);
+}
+
+/* Asegurar que el texto esté alineado correctamente */
+.problem-list li, .solution-list li {
+    font-size: 1rem;
+    color: var(--text);
+    font-weight: 500;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.problem-list li:last-child, .solution-list li:last-child {
+    border-bottom: none;
+}
+
+/* Estilos para los títulos H3 dentro de los contenedores */
+.problem-col h3, .solution-col h3 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 1.4rem;
+    color: var(--text);
+}
+
+.problem-col h3 i, .solution-col h3 i {
+    margin-right: 12px;
+    font-size: 1.2rem;
+}
+
+.problem-col h3 i {
+    color: var(--dark);
+}
+
+.solution-col h3 i {
+    color: var(--accent);
+}
+
+
+
+
+
+
 
         /* How it Works Section */
-        .process-steps {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-        }
+     /* How it Works Section - CON CSS GRID MEJORADO */
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px; /* Más espacio entre elementos */
+    align-items: start;
+    padding: 40px 0;
+}
 
-        .step {
-            flex: 1;
-            min-width: 250px;
-            max-width: 300px;
-            background-color: white;
-            padding: 40px 30px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: var(--transition);
-            position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .section-title p {
-            font-size: 1.3rem;
-            color: var(--text-secondary);
-            margin-top: 15px;
-        }
-        .step:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            border-color: var(--primary);
-        }
+.step {
+    background-color: white;
+    padding: 30px 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+    border: 1px solid var(--background-grey);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%; /* Asegura que todos tengan la misma altura */
+}
 
-        .step:before {
-            content: '';
-            position: absolute;
-            top: -15px;
-            left: -15px;
-            width: 30px;
-            height: 30px;
-            background-color: var(--primary);
-            border-radius: 50%;
-            z-index: -1;
-            transition: var(--transition);
-        }
+.step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
 
-        .step:hover:before {
-            transform: scale(1.3);
-            opacity: 0.7;
-        }
+.step-icon {
+    position: relative;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+}
 
-        .step-icon {
-            position: relative;
-            margin-bottom: 25px;
-            flex-grow: 1; /* Opcional: Hace que cada icono ocupe espacio por igual */
-            text-align: center;
-        }
+.step-icon i {
+    font-size: 2.2rem;
+    color: var(--primary);
+    transition: var(--transition);
+}
 
-        .iconos-fila-completa {
-           display: flex;             /* Coloca todos los hijos en una fila */
-           justify-content: space-around; /* O space-between, o space-evenly */
-           align-items: flex-start;   /* Alinea por arriba */
-           width: 100%;               /* Asegura que ocupe todo el ancho del contenedor */}
+.step:hover .step-icon i {
+    transform: scale(1.1);
+}
 
+.step-number {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    z-index: 2;
+}
+
+.step h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0; /* Eliminado porque el párrafo está oculto */
+    color: var(--text);
+    line-height: 1.4;
+    min-height: 3.5rem; /* Altura consistente para títulos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ocultar párrafos descriptivos extra */
+.step p {
+    display: none;
+}
+
+/* Flechas entre steps usando pseudo-elementos */
+.step:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary);
+    font-size: 2rem;
+    font-weight: bold;
+    opacity: 0.7;
+}
+
+/* Ajustes para tablets */
+@media (max-width: 1024px) {
+    .process-steps {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
     
+    /* Reorganizar flechas para 3 columnas */
+    .step:nth-child(3)::after {
+        display: none; /* Ocultar flecha después del tercer step */
+    }
+    
+    .step:nth-child(4)::after {
+        display: block; /* Mostrar flecha en el cuarto step */
+        right: -20px;
+    }
+}
 
-        .step-icon i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            transition: var(--transition);
-        }
+/* Ajustes para móviles - Scroll horizontal */
+@media (max-width: 768px) {
+    .process-steps {
+        display: grid;
+        grid-template-columns: repeat(5, 280px);
+        gap: 20px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        padding: 30px 10px;
+        scroll-padding: 20px;
+    }
+    
+    .step {
+        scroll-snap-align: start;
+        min-width: 260px; /* Un poco menos de 280px para padding */
+    }
+    
+    /* Ocultar todas las flechas en móvil */
+    .step::after {
+        display: none;
+    }
+    
+    /* Personalizar scrollbar */
+    .process-steps::-webkit-scrollbar {
+        height: 6px;
+    }
+    
+    .process-steps::-webkit-scrollbar-track {
+        background: var(--background-grey);
+        border-radius: 10px;
+    }
+    
+    .process-steps::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 10px;
+    }
+}
 
-        .step:hover .step-icon i {
-            transform: scale(1.1);
-        }
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .process-steps {
+        grid-template-columns: repeat(5, 250px);
+        gap: 15px;
+    }
+    
+    .step {
+        min-width: 230px;
+        padding: 25px 15px;
+    }
+    
+    .step-icon {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .step-icon i {
+        font-size: 2rem;
+    }
+    
+    .step h3 {
+        font-size: 1rem;
+        min-height: 3rem;
+    }
+}
 
-        .step-number {
-            position: absolute;
-            top: -15px;
-            right: -15px;
-            width: 40px;
-            height: 40px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.2rem;
-            transition: var(--transition);
-        }
+/* Asegurar que el contenedor no se desborde en desktop */
+.container {
+    overflow: hidden; /* Evitar scroll horizontal no deseado en desktop */
+}
 
-      
-        .step:hover .step-number {
-            transform: scale(1.1);
-        }
+/* Efecto de sombra en los extremos del scroll para móvil */
+.process-steps {
+    position: relative;
+}
 
-        .step h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: black;
-        }
+.process-steps::before,
+.process-steps::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    z-index: 1;
+    pointer-events: none;
+}
 
-        .step p {
-            color: black;
-            font-size: 1rem;
-        }
+.process-steps::before {
+    left: 0;
+    background: linear-gradient(to right, var(--background-grey), transparent);
+}
+
+.process-steps::after {
+    right: 0;
+    background: linear-gradient(to left, var(--background-grey), transparent);
+}
+
+@media (min-width: 769px) {
+    .process-steps::before,
+    .process-steps::after {
+        display: none;
+    }
+}
 
         /* Value Pillars Section */
         .value-pillars {
@@ -568,41 +839,132 @@
         }
 
         /* Target Audience Section */
-        .audience-cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-        }
+        /* Target Audience Section con Iconos Más Grandes */
+.audience-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
 
-        .audience-card {
-            flex: 1;
-            min-width: 300px;
-            max-width: 400px;
-            background-color: white;
-            padding: 40px 30px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
+.audience-card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    background-color: var(--white);
+    padding: 50px 30px; /* Más padding para acomodar iconos grandes */
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
 
-        .audience-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            border-color: var(--primary);
-        }
+.audience-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
 
-        .audience-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: black;
-        }
+.audience-icon {
+    width: 120px; /* Aumentado de 80px a 120px */
+    height: 120px; /* Aumentado de 80px a 120px */
+    background: linear-gradient(135deg, rgba(44, 82, 254, 0.1), rgba(44, 82, 254, 0.2));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px; /* Más espacio debajo del icono */
+    font-size: 3rem; /* Aumentado de 2rem a 3rem */
+    color: var(--primary);
+    transition: var(--transition);
+    position: relative;
+    z-index: 2;
+}
 
-        .audience-card p {
-            color: black;
-        }
+/* Efecto especial para el icono de chart-line (picos) */
+.audience-card:first-child .audience-icon {
+    background: linear-gradient(135deg, rgba(44, 82, 254, 0.1), rgba(6, 182, 212, 0.2));
+}
+
+/* Efecto especial para el icono de puzzle-piece (complejidad) */
+.audience-card:last-child .audience-icon {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(44, 82, 254, 0.2));
+}
+
+.audience-card:hover .audience-icon {
+    transform: scale(1.1) rotate(5deg);
+    background: linear-gradient(135deg, rgba(44, 82, 254, 0.2), rgba(44, 82, 254, 0.3));
+}
+
+.audience-card h3 {
+    font-size: 1.5rem; /* Ligeramente más grande para equilibrar */
+    margin-bottom: 15px;
+    color: var(--text);
+}
+
+.audience-card p {
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+    font-size: 1.1rem; /* Texto ligeramente más grande */
+}
+
+/* Efecto de fondo sutil al hacer hover */
+.audience-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(44, 82, 254, 0.05), transparent);
+    transition: left 0.6s;
+}
+
+.audience-card:hover::before {
+    left: 100%;
+}
+
+/* Ajustes responsivos para iconos grandes */
+@media (max-width: 768px) {
+    .audience-icon {
+        width: 100px;
+        height: 100px;
+        font-size: 2.5rem;
+        margin-bottom: 25px;
+    }
+    
+    .audience-card {
+        padding: 40px 25px;
+    }
+    
+    .audience-card h3 {
+        font-size: 1.8rem;
+    }
+    
+    .audience-card p {
+        font-size: 1.4rem;
+        color: #6B7280;
+    }
+}
+
+@media (max-width: 480px) {
+    .audience-icon {
+        width: 90px;
+        height: 90px;
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+    }
+    
+    .audience-card {
+        padding: 30px 20px;
+        min-width: 280px;
+    }
+}
 
         /* Comparison Table */
         .comparison-table {
@@ -618,69 +980,149 @@
             padding: 15px;
             text-align: left;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            justify-content: center;
         }
 
         .comparison-table th {
             background-color: var(--dark-lighter);
-            font-weight: 700;
+            font-weight: 900;
         }
 
         .comparison-table td {
-            background-color: rgba(30, 41, 59, 0.7);
+            background-color: white;
         }
 
         .comparison-table tr:last-child td {
             border-bottom: none;
         }
+        .comparison-table thead tr {
+    background-color: var(--primary) !important;
+}
+
+/* Header general azul para todas las columnas excepto Astorre */
+/* Header general azul para las otras columnas */
+.comparison-table thead tr th {
+    background-color: var(--primary) !important;
+    color: white !important;
+    font-weight: 700;
+    padding: 20px 15px;
+    text-align: center;
+    border: none;
+    font-size: 1.1rem;
+}
+
+/* Específicamente para la columna Astorre - FONDO TURQUESA (ACCENT) */
+.comparison-table thead tr th:nth-child(5) {
+    background-color: var(--accent) !important; /* #06B6D4 */
+    color: white !important;
+}
+
+/* Bordes redondeados */
+.comparison-table thead tr th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.comparison-table thead tr th:nth-child(5) {
+    border-top-right-radius: 10px;
+}
+
+/* Efecto hover para Astorre */
+.comparison-table thead tr th:nth-child(5):hover {
+    background-color: #059BB5 !important; /* Turquesa más oscuro */
+    transition: background-color 0.3s ease;
+}
+.comparison-table thead th {
+    color: white !important;
+    /* ... más estilos ... */
+}
 
         .check-icon {
-            color: #10b981;
+            color: var(--primary);
+            justify-content: center;
+            
         }
 
         .cross-icon {
-            color: #ef4444;
+            color: var(--dark);
         }
 
-        .partial-icon {
-            color: #f59e0b;
-        }
+.comparison-table tbody td:not(:first-child) {
+    text-align: center;
+}
 
-        /* RTBs Section */
-        .rtb-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
 
-        .rtb-item {
-            margin-bottom: 25px;
-            padding-left: 30px;
-            position: relative;
-            background-color: var(--dark-lighter);
-            padding: 20px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
 
-        .rtb-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
+        
+       
+    /* Why It Works Section - Tarjetas con borde izquierdo y sombra */
+.rtb-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
 
-        .rtb-item:before {
-            content: '•';
-            position: absolute;
-            left: 10px;
-            color: var(--primary);
-            font-size: 1.5rem;
-        }
+.rtb-item {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 0 var(--radius) var(--radius) 0; /* Redondeo en esquinas derechas */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    height: 100%;
+    border-left: 5px solid; /* Borde izquierdo de color */
+    position: relative;
+}
 
-        .rtb-item strong {
-            color: var(--primary);
-        }
+/* Alternar colores del borde izquierdo */
+.rtb-item:nth-child(odd) {
+    border-left-color: var(--primary); /* Azul para impares */
+}
 
-        /* Demo Section */
+.rtb-item:nth-child(even) {
+    border-left-color: var(--accent); /* Turquesa para pares */
+}
+
+.rtb-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Ajustamos los iconos para que no tengan sombra, sino la tarjeta */
+.rtb-icon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, rgba(44, 82, 254, 0.1), rgba(44, 82, 254, 0.2));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+/* Cambiar color de icono para items pares (accent) */
+.rtb-item:nth-child(even) .rtb-icon {
+    color: var(--accent);
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(6, 182, 212, 0.2));
+}
+
+.rtb-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--text);
+    font-weight: 700;
+}
+
+.rtb-content p {
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+   /* Demo Section */
         .demo-section {
             text-align: center;
             background: var(--dark-gradient-lighter);
@@ -702,6 +1144,7 @@
             box-shadow: var(--shadow);
             border: 2px dashed var(--primary-light);
         }
+
 
         /* Founder Story */
         .founder-story {
@@ -730,6 +1173,160 @@
             flex: 1;
             min-width: 300px;
         }
+
+
+
+/* --- NEWS CONTAINER --- */
+.insights-news {
+    text-align: center; /* Centra todo el contenido de la sección */
+    padding: 80px 20px; /* Añade espacio vertical y horizontal */
+    overflow-x: hidden; /* Evita el desbordamiento horizontal */
+}
+
+/* --- Título Principal "INSIGHTS & NEWS" --- */
+.insights-news h2 {
+    font-size: 2.2rem; /* Tamaño de fuente grande */
+    font-weight: 700; /* Texto en negrita */
+    color: #1a2b48; /* Un color azul oscuro/casi negro */
+    margin-bottom: 15px;
+    position: relative; /* Necesario para el pseudo-elemento de la línea */
+    display: inline-block; /* Ajusta el bloque al tamaño del texto */
+}
+
+/* --- Línea decorativa azul debajo del título --- */
+.insights-news h2::after {
+    content: ''; /* Contenido vacío, es solo un elemento visual */
+    display: block;
+    width: 60px; /* Ancho de la línea */
+    height: 3px; /* Grosor de la línea */
+    background-color: #0056f5; /* Color azul vibrante */
+    margin: 15px auto 0; /* Centra la línea horizontalmente y le da espacio */
+}
+
+/* --- Subtítulo de la sección --- */
+.insights-news .subtitle {
+    font-size: 1.1rem;
+    color: #6c757d; /* Un gris suave para el subtítulo */
+    max-width: 600px; /* Evita que el texto sea demasiado ancho en pantallas grandes */
+    margin: 0 auto 60px auto; /* Centra y añade espacio inferior */
+}
+
+/* --- Contenedor de las Tarjetas --- */
+.cards-container {
+    display: flex; /* Usa Flexbox para alinear las tarjetas horizontalmente */
+    justify-content: center; /* Centra las tarjetas en el contenedor */
+    gap: 30px; /* Espacio entre las tarjetas */
+    flex-wrap: wrap; /* Permite que las tarjetas se muevan a la siguiente línea en pantallas pequeñas */
+}
+
+/* --- Estilo Individual de cada Tarjeta --- */
+.news-card {
+    background-color: #ffffff;
+    border: 1px solid #e9eef4; /* Borde muy sutil */
+    border-radius: 12px; /* Esquinas redondeadas */
+    padding: 40px 35px; /* Espacio interno generoso */
+    max-width: 360px; /* Ancho máximo para cada tarjeta */
+    text-align: left; /* Alinea el texto de la tarjeta a la izquierda */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Sombra suave por defecto */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para el hover */
+}
+
+/* --- Efecto Hover para las Tarjetas --- */
+.news-card:hover {
+    transform: translateY(-8px); /* Eleva la tarjeta ligeramente */
+    box-shadow: 0 10px 25px rgba(0, 86, 245, 0.15); /* Sombra azul más pronunciada */
+}
+
+/* --- Título dentro de la Tarjeta --- */
+.news-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a2b48;
+    margin-bottom: 15px;
+}
+
+/* --- Párrafo dentro de la Tarjeta --- */
+.news-card p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6; /* Mejora la legibilidad */
+    margin-bottom: 30px;
+}
+
+/* --- Enlace "Read more" --- */
+.news-card .read-more {
+    color: #0056f5;
+    text-decoration: none; /* Quita el subrayado */
+    font-weight: 600;
+    transition: color 0.3s ease;
+    margin-top: auto;
+    padding-top: 20PX;
+}
+
+.news-card .read-more:hover {
+    color: #003bb0; /* Un azul más oscuro al pasar el ratón */
+}
+
+/* --- Diseño Responsivo para Móviles --- */
+@media (max-width: 768px) {
+    .insights-news {
+        padding: 60px 15px;
+    }
+
+    .insights-news h2 {
+        font-size: 1.8rem;
+    }
+
+    .insights-news .subtitle {
+        font-size: 1rem;
+        margin-bottom: 40px;
+    }
+
+    .cards-container {
+        flex-direction: column; /* Apila las tarjetas verticalmente */
+        align-items: center; /* Centra las tarjetas apiladas */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         /* Contact Form */
         .contact-form {
@@ -771,17 +1368,27 @@
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(44, 82, 254, 0.2);
         }
+.contact-form .btn-primary {
+    background-color: var(--primary);
+     border-radius: 0;
+    
+    /* ⚠️ Corrección del error de selector en tu código original:
+       Si estabas usando '.btn btn-primary', ¡cámbialo a esto! */
+    border: 2px solid var(--primary);
+    
+    /* Ajusta el relleno si quieres que el botón se vea más grande/pequeño */
+    padding: 15px 30px;
+}
 
-        .btn btn-primary {
-            width: 100%;
-            padding: 15px;
-            font-size: 1.4rem;
-            font-weight: 600;
-        }
+.btn.btn-primary {
+    /* Si tenías más estilos aquí, muévelos a .contact-form .btn */
+    border: 2px solid var(--primary);
+}
+
 
       /* Footer */
 footer {
-  background-color: var(--primary);
+  background-color: #2C52FE;
   color: white;
   padding: 80px 0 0;
   text-align: left;
