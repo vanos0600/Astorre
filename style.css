@@ -79,18 +79,18 @@
             color: var(--white);
             text-decoration: none;
             transition: var(--transition);
-            filter: drop-shadow(0 6px 12px rgba(44, 82, 254, 0.6)); 
+            filter: drop-shadow(0 6px 12px rgb(0, 0, 0)); 
         }
 
         .logo img {
             height: 30px;
             margin-right: 0px;
-           filter: drop-shadow(0 6px 12px rgba(44, 82, 254, 0.6)); 
+           filter: drop-shadow(0 6px 12px rgb(0, 0, 0)); 
         }
 
         .logo:hover {
             transform: translateY(-2px);
-            filter: drop-shadow(0 6px 12px rgba(44, 82, 254, 0.6)); 
+            filter: drop-shadow(0 6px 12px rgb(0, 0, 0)); 
         }
 
         nav ul {
