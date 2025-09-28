@@ -144,3 +144,37 @@ document.addEventListener('DOMContentLoaded', function() {
         window.dispatchEvent(new Event('scroll'));
     }, 500);
 });
+
+/* Archivo: script.js */
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Obtener los elementos relevantes del DOM
+    const nav = document.getElementById('nav');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn'); // Asume que este es el botón de la hamburguesa
+
+    // 2. Comprobar si los elementos existen para evitar errores
+    if (nav && mobileMenuBtn) {
+        // 3. Añadir el event listener para el click en el botón
+        mobileMenuBtn.addEventListener('click', () => {
+            // 4. Alternar la clase 'active' en el elemento #nav
+            // El CSS maneja la animación de 'transform: translateY(0)'
+            nav.classList.toggle('active');
+
+            // Opcional: Alternar una clase en el botón para cambiar su ícono (ej. de hamburguesa a 'X')
+            // mobileMenuBtn.classList.toggle('is-open'); 
+        });
+
+        // Opcional: Cerrar el menú si se hace clic en un enlace (para single-page applications)
+        const navLinks = nav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // Solo si el menú está activo, lo cierra
+                if (nav.classList.contains('active')) {
+                    nav.classList.remove('active');
+                }
+            });
+        });
+    } else {
+        console.error('El elemento #nav o .mobile-menu-btn no se encontró en el DOM.');
+    }
+});
