@@ -840,6 +840,37 @@
             color: black;
         }
 
+
+        /* --- Responsividad para Tabletas (max-width: 768px) --- */
+@media (max-width: 768px) {
+    /* Forzar 2 columnas en tabletas con un espacio de 20px entre ellas */
+    .pillar-card {
+        /* Permite que haya 2 tarjetas por fila con gap de 20px */
+        flex: 1 1 calc(50% - 10px); 
+        max-width: none; /* Permite que tome el 50% del ancho */
+        min-width: 280px; /* Establece un ancho mínimo cómodo */
+    }
+}
+
+/* --- Responsividad para Móviles Pequeños (max-width: 480px) --- */
+@media (max-width: 480px) {
+    /* Forzar 1 columna en móviles */
+    .pillar-card {
+        /* Ocupa el 100% del ancho disponible en la pantalla */
+        flex: 1 1 100%;
+        min-width: 90%; /* Ajuste para que no esté demasiado apretado en los bordes */
+        padding: 30px 20px; /* Reduce el relleno para ahorrar espacio vertical */
+    }
+
+    .pillar-card h3 {
+        font-size: 1.2rem; /* Reduce un poco el tamaño del título */
+    }
+
+    .pillar-card p {
+        font-size: 1rem; /* Reduce un poco el tamaño del párrafo */
+    }
+}
+
         /* Target Audience Section */
         /* Target Audience Section con Iconos Más Grandes */
 .audience-cards {
@@ -1052,7 +1083,26 @@
     text-align: center;
 }
 
+@media (max-width: 768px) {
+    /* Reduce el relleno general de las celdas */
+    .comparison-table th, 
+    .comparison-table td {
+        padding: 10px; /* Reducimos de 15px a 10px */
+        font-size: 0.9rem; /* Un poco más pequeño para que quepa más texto */
+    }
 
+    /* Reduce el relleno del encabezado (th) */
+    .comparison-table thead tr th {
+        padding: 15px 10px; /* Reducimos de 20px a 15px en vertical */
+        font-size: 0.95rem; /* Aseguramos que los encabezados quepan */
+    }
+
+    /* Asegura que la columna de características sea legible */
+    .comparison-table tbody td:first-child {
+        /* Evita el salto de línea para que el scroll sea más predecible */
+        white-space: nowrap; 
+    }
+}
 
         
        
@@ -1124,6 +1174,46 @@
     margin: 0;
 }
 
+/* --- Responsividad para Tabletas (max-width: 992px y 768px) --- */
+@media (max-width: 992px) {
+    /* Mantenemos 2 columnas en pantallas grandes de tableta */
+    .rtb-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px; /* Reducimos un poco el espacio entre tarjetas */
+    }
+}
+
+@media (max-width: 768px) {
+    /* Forzamos 1 sola columna en tabletas pequeñas y móviles horizontales */
+    .rtb-grid {
+        grid-template-columns: 1fr; /* Una columna que ocupe todo el ancho */
+        gap: 25px; /* Aumentamos ligeramente el espacio vertical */
+    }
+    
+    /* Pequeños ajustes visuales para ahorrar espacio */
+    .rtb-item {
+        padding: 25px; /* Reducimos el padding interno de la tarjeta */
+        gap: 15px; /* Reducimos el espacio entre el ícono y el texto */
+    }
+    
+    .rtb-icon {
+        width: 50px; /* Reducimos el tamaño del icono */
+        height: 50px;
+        font-size: 1.3rem; /* Reducimos el tamaño de la fuente del icono */
+    }
+    
+    .rtb-content h3 {
+        font-size: 1.1rem; /* Hacemos el título un poco más pequeño */
+    }
+}
+
+/* --- Responsividad para Móviles Pequeños (max-width: 480px) --- */
+@media (max-width: 480px) {
+    /* Aseguramos que la columna siga siendo 1fr y ajustamos el padding */
+    .rtb-item {
+        padding: 20px;
+    }
+}
    /* Demo Section */
         .demo-section {
             text-align: center;
