@@ -156,15 +156,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (nav && mobileMenuBtn) {
         // 3. Añadir el event listener para el click en el botón
         mobileMenuBtn.addEventListener('click', () => {
-            // 4. Alternar la clase 'active' en el elemento #nav
-            // El CSS maneja la animación de 'transform: translateY(0)'
-            nav.classList.toggle('active');
+           nav.classList.toggle('active');
 
-            // Opcional: Alternar una clase en el botón para cambiar su ícono (ej. de hamburguesa a 'X')
-            // mobileMenuBtn.classList.toggle('is-open'); 
         });
 
-        // Opcional: Cerrar el menú si se hace clic en un enlace (para single-page applications)
+        //  Cerrar el menu si se hace clic en un enlace (para single-page applications)
         const navLinks = nav.querySelectorAll('a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {

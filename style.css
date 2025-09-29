@@ -29,7 +29,7 @@
         body {
             font-family: 'Leelawadee', sans-serif;
             color: var(--text);
-            background: white;
+            background: #EDEFF2;
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -339,6 +339,8 @@
             color: var(--gray);
             margin-top: 25px;
         }
+
+
 
         /* Problem-Solution Section */
         .problem-solution {
@@ -871,8 +873,8 @@
     }
 }
 
-        /* Target Audience Section */
-        /* Target Audience Section con Iconos Más Grandes */
+/* Target Audience Section */
+
 .audience-cards {
     display: flex;
     flex-wrap: wrap;
@@ -1083,26 +1085,7 @@
     text-align: center;
 }
 
-@media (max-width: 768px) {
-    /* Reduce el relleno general de las celdas */
-    .comparison-table th, 
-    .comparison-table td {
-        padding: 10px; /* Reducimos de 15px a 10px */
-        font-size: 0.9rem; /* Un poco más pequeño para que quepa más texto */
-    }
 
-    /* Reduce el relleno del encabezado (th) */
-    .comparison-table thead tr th {
-        padding: 15px 10px; /* Reducimos de 20px a 15px en vertical */
-        font-size: 0.95rem; /* Aseguramos que los encabezados quepan */
-    }
-
-    /* Asegura que la columna de características sea legible */
-    .comparison-table tbody td:first-child {
-        /* Evita el salto de línea para que el scroll sea más predecible */
-        white-space: nowrap; 
-    }
-}
 
         
        
@@ -1126,6 +1109,8 @@
     border-left: 5px solid; /* Borde izquierdo de color */
     position: relative;
 }
+
+
 
 /* Alternar colores del borde izquierdo */
 .rtb-item:nth-child(odd) {
@@ -1162,7 +1147,7 @@
 }
 
 .rtb-content h3 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     margin-bottom: 10px;
     color: var(--text);
     font-weight: 700;
@@ -1172,73 +1157,136 @@
     color: var(--text-secondary);
     line-height: 1.5;
     margin: 0;
+    font-size: 1.4rem;
+}
+/* Estilos para la sección Demo */
+.demo-section {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 80px 20px;
+    background-color: #ffffff;
+    color: #333;
 }
 
-/* --- Responsividad para Tabletas (max-width: 992px y 768px) --- */
+.demo-section .container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.demo-section .section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.demo-section .section-title h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: black;
+    margin: 0 0 10px 0;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.demo-section .section-title h2::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #4B6EFD;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.demo-section .section-title p {
+    font-size: 1.4rem;
+    color: #555;
+    margin: 0;
+}
+
+.demo-content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    font-size: 1.2rem;
+}
+
+.demo-image {
+    flex-basis: 45%;
+    max-width: 450px;
+}
+
+.demo-image img {
+    width: 100%;
+    height: auto;
+}
+
+.demo-text-content {
+    flex-basis: 55%;
+    max-width: 500px;
+    text-align: left;
+}
+
+.demo-text-content .demo-feature {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+    padding-left: 30px;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.demo-text-content .demo-feature::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    top: 1px;
+    color: #4B6EFD;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.demo-text-content .demo-closing {
+    font-size: 16px;
+    color: #2c3e50;
+    font-weight: 500;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.demo-text-content .btn-demo {
+    background-color: #4B6EFD;
+    color: #ffffff;
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.demo-text-content .btn-demo:hover {
+    background-color: #3a5cdf;
+}
+
+/* Ajustes responsivos */
 @media (max-width: 992px) {
-    /* Mantenemos 2 columnas en pantallas grandes de tableta */
-    .rtb-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px; /* Reducimos un poco el espacio entre tarjetas */
+    .demo-content-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+    .demo-text-content {
+        margin-top: 40px;
     }
 }
 
-@media (max-width: 768px) {
-    /* Forzamos 1 sola columna en tabletas pequeñas y móviles horizontales */
-    .rtb-grid {
-        grid-template-columns: 1fr; /* Una columna que ocupe todo el ancho */
-        gap: 25px; /* Aumentamos ligeramente el espacio vertical */
-    }
-    
-    /* Pequeños ajustes visuales para ahorrar espacio */
-    .rtb-item {
-        padding: 25px; /* Reducimos el padding interno de la tarjeta */
-        gap: 15px; /* Reducimos el espacio entre el ícono y el texto */
-    }
-    
-    .rtb-icon {
-        width: 50px; /* Reducimos el tamaño del icono */
-        height: 50px;
-        font-size: 1.3rem; /* Reducimos el tamaño de la fuente del icono */
-    }
-    
-    .rtb-content h3 {
-        font-size: 1.1rem; /* Hacemos el título un poco más pequeño */
-    }
-}
 
-/* --- Responsividad para Móviles Pequeños (max-width: 480px) --- */
-@media (max-width: 480px) {
-    /* Aseguramos que la columna siga siendo 1fr y ajustamos el padding */
-    .rtb-item {
-        padding: 20px;
-    }
-}
-   /* Demo Section */
-        .demo-section {
-            text-align: center;
-            background: var(--dark-gradient-lighter);
-            padding: 100px 0;
-            border-radius: var(--radius);
-        }
-
-        .demo-placeholder {
-            width: 100%;
-            max-width: 800px;
-            height: 400px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: var(--radius);
-            margin: 40px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray);
-            box-shadow: var(--shadow);
-            border: 2px dashed var(--primary-light);
-        }
-
-
-        /* Founder Story */
+/* Founder Story */
         .founder-story {
             display: flex;
             flex-wrap: wrap;
@@ -1732,3 +1780,7 @@ footer {
                 justify-content: center;
             }
         }
+
+        p {
+    font-size: 1.4rem !important;
+}
