@@ -398,7 +398,7 @@ nav ul li a:hover {
 .problem-solution {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-lg);
+    gap: 200px;
 }
 
 .problem-col, .solution-col {
@@ -707,7 +707,7 @@ nav ul li a:hover {
 }
 
 .comparison-table th, .comparison-table td {
-    padding: var(--space-lg);
+    padding: var(--space-sm);
     text-align: left;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -958,8 +958,8 @@ nav ul li a:hover {
 
 .founder-image {
     flex: 1;
-    min-width: 300px;
-    max-width: 400px;
+    min-width: 250px;
+    max-width: 350px;
 }
 
 .founder-image img {
