@@ -707,7 +707,7 @@ nav ul li a:hover {
 }
 
 .comparison-table th, .comparison-table td {
-    padding: var(--space-sm);
+    padding: var(--space-lg);
     text-align: left;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }

@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Cookie preferences managed');
     });
 });
+
 // Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
