@@ -111,6 +111,19 @@ h3, .column-title {
     background: var(--primary);
 }
 
+/* ===== SPECIFIC SECTION BACKGROUNDS ===== */
+.hero { background: var(--background-neutral); }
+#challenges { background: var(--white); }
+#how-it-works { background: var(--background-neutral); }
+#value { background: var(--white); }
+#who-its-for { background: var(--background-neutral); }
+#why-astorre { background: var(--white); }
+#why-it-works { background: var(--background-neutral); }
+#see-it-in-action { background: var(--background-neutral); }
+#founder-story { background: var(--white); }
+#insights-news { background: var(--background-neutral); }
+#contact { background: var(--white); }
+
 /* ===== LAYOUT & CONTAINERS ===== */
 .container {
     width: 100%;
@@ -542,15 +555,27 @@ nav ul li a:hover {
     justify-content: center;
 }
 
+/* ===== FIXED: Process Step Connecting Arrows ===== */
 .step:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  right: -16px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 32px;
-  height: 1px;
-  background-color: #BBD0FF;
+    content: '';
+    position: absolute;
+    right: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 1px;
+    background-color: #BBD0FF;
+}
+
+.step:not(:last-child)::before {
+    content: '→';
+    position: absolute;
+    right: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #BBD0FF;
+    font-size: 14px;
+    z-index: 1;
 }
 
 /* ===== VALUE PILLARS SECTION ===== */
@@ -580,6 +605,7 @@ nav ul li a:hover {
     border-color: var(--primary);
 }
 
+/* ===== FIXED: Value Pillar Icons - Solid circle, no border ===== */
 .pillar-icon {
     width: 80px;
     height: 80px;
@@ -592,6 +618,7 @@ nav ul li a:hover {
     font-size: 2rem;
     color: #FFFFFF;
     transition: var(--transition);
+    border: none;
 }
 
 .pillar-card:hover .pillar-icon {
@@ -696,7 +723,7 @@ nav ul li a:hover {
     left: 100%;
 }
 
-/* ===== COMPARISON TABLE ===== */
+/* ===== FIXED: COMPARISON TABLE ===== */
 .comparison-table {
     width: 100%;
     border-collapse: collapse;
@@ -713,9 +740,9 @@ nav ul li a:hover {
 }
 
 .comparison-table th {
-    background-color: var(--primary);
+    background-color: #2C52FE;
     font-weight: 600;
-    color: var(--white);
+    color: #FFFFFF;
     padding: var(--space-sm);
     text-align: center;
     border: none;
@@ -723,7 +750,7 @@ nav ul li a:hover {
 }
 
 .comparison-table thead tr th:last-child {
-    background-color: #00B3C8;
+    background-color: #08B3C8;
 }
 
 .comparison-table thead tr th:first-child {
@@ -741,6 +768,8 @@ nav ul li a:hover {
 
 .comparison-table td {
     background-color: var(--white);
+    color: #111111;
+    font-size: 16px;
 }
 
 .comparison-table tr:last-child td {
@@ -1061,7 +1090,7 @@ nav ul li a:hover {
     color: var(--primary-dark);
 }
 
-/* ===== CONTACT FORM ===== */
+/* ===== FIXED: CONTACT FORM ===== */
 .contact-form {
     max-width: 600px;
     margin: 0 auto;
@@ -1078,7 +1107,7 @@ nav ul li a:hover {
 .form-group label {
     display: block;
     margin-bottom: 8px;
-    font-weight: 500;
+    font-weight: normal;
     font-size: 14px;
     color: #666666;
 }
@@ -1093,7 +1122,7 @@ nav ul li a:hover {
     font-family: 'Leelawadee', sans-serif;
     font-size: 16px;
     transition: var(--transition);
-    color: var(--text-body);
+    color: #111111;
 }
 
 .form-group input:focus,
@@ -1109,10 +1138,19 @@ nav ul li a:hover {
 }
 
 .contact-form .btn-primary {
-    background-color: var(--primary);
+    background-color: #2C52FE;
     border-radius: 8px;
-    border: 2px solid var(--primary);
+    border: none;
     padding: 16px 32px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #FFFFFF;
+    width: 100%;
+    transition: var(--transition);
+}
+
+.contact-form .btn-primary:hover {
+    background-color: #1E3BDD;
 }
 
 .privacy-notice {
@@ -1134,7 +1172,7 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
-/* ===== FOOTER ===== */
+/* ===== FIXED: FOOTER ===== */
 footer {
     background-color: #2C52FE;
     color: var(--white);
@@ -1174,6 +1212,7 @@ footer {
 
 .footer-links ul li a:hover {
     color: #DDE7FF;
+    text-decoration: none;
 }
 
 .footer-legal {
@@ -1183,6 +1222,16 @@ footer {
 
 .footer-legal a {
     color: #FFFFFF;
+    text-decoration: none;
+}
+
+.footer-legal a[href^="mailto"] {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.footer-legal a[href^="mailto"]:hover {
+    color: #DDE7FF;
     text-decoration: none;
 }
 
@@ -1198,7 +1247,7 @@ footer {
     color: #BFBFBF;
 }
 
-/* ===== COOKIE BANNER ===== */
+/* ===== FIXED: COOKIE BANNER ===== */
 .cookie-banner {
     position: fixed;
     bottom: 0;
@@ -1259,6 +1308,10 @@ footer {
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-weight: bold;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .cookie-buttons .btn-primary {
@@ -1273,6 +1326,7 @@ footer {
 .cookie-buttons .btn-secondary {
     background-color: #EEF2FF;
     color: #2C52FE;
+    font-weight: bold;
 }
 
 .cookie-buttons .btn-secondary:hover {
