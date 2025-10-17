@@ -556,16 +556,7 @@ nav ul li a:hover {
 }
 
 /* ===== FIXED: Process Step Connecting Arrows ===== */
-.step:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    right: -16px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 32px;
-    height: 1px;
-    background-color: #BBD0FF;
-}
+
 
 .step:not(:last-child)::before {
     content: '→';
@@ -573,8 +564,8 @@ nav ul li a:hover {
     right: -16px;
     top: 50%;
     transform: translateY(-50%);
-    color: #BBD0FF;
-    font-size: 14px;
+    color: var(--primary);
+    font-size: 40px;
     z-index: 1;
 }
 
